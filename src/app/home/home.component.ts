@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as jsonic from 'jsonic';
+import { KeysPipe } from './keys.pipe';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,6 @@ import * as jsonic from 'jsonic';
 export class HomeComponent implements OnInit {
 
   displayOutput: any;
-  arrayOfKeys: any;
 
   constructor() { }
 
@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   onKey(input) {
     try {
       this.displayOutput = this.getInterface(jsonic(input.target.value));
-      this.arrayOfKeys = Object.keys(this.displayOutput.add);
     }
     catch {
       console.log('error');
@@ -65,20 +64,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
-
-//https://stackoverflow.com/questions/35647365/how-to-display-json-object-using-ngfor
-/*
-import { Pipe, PipeTransform } from '@angular/core'
-
-@Pipe({name: 'keys'})
-export class KeysPipe implements PipeTransform {
-  transform(value, args:string[]) : any {
-    let keys = [];
-    for (let key in value) {
-      keys.push({key: key, value: value[key]});
-    }
-    return keys;
-  }
-}
-*/

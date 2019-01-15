@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { KeysPipe } from './keys.pipe';
+
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
@@ -9,6 +11,9 @@ import { HomeComponent } from './home.component';
     CommonModule,
     HomeRoutingModule
   ],
-  declarations: [HomeComponent]
+  declarations: [
+    KeysPipe,
+    HomeComponent
+  ]
 })
 export class HomeModule { }

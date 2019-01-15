@@ -1,16 +1,14 @@
 <input (keyup)="onKey($event)">
 
-<!--<p>{{ displayOutput | json }}</p>-->
-
+<!-- with pipe -->
 <div class="output-container">
-  <div class="output-interface" *ngFor="let key of arrayOfKeys">
-    export interface {{ key }}
+  <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
+    export interface {{ entry.key }}
     <br />
-    {{ displayOutput.add[key] | json }}
+    <div *ngFor="let item of entry.value | keys">
+      {{ item.key }} : {{ item.value | json }}
+      <br />
+    </div>
+    <!--{{ entry.value | json }}-->
   </div>
 </div>
-<!--
-<p *ngFor="let entry of displayOutput | keys">
-{{entry.key}}
-</p>
--->
