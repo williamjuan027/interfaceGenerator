@@ -4,8 +4,17 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px auto 30px auto 30px auto 50px;
+  grid-template-rows: 50px auto 50px auto 30px auto 50px;
   justify-items: center;
+}
+
+.home-title {
+  font-size: 1.1em;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: sans-serif;
+  line-height: 1.7em;
 }
 
 .text-area-container {
@@ -23,13 +32,15 @@
   border: none;
   box-sizing: border-box;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  font-family: monospace;
 }
 
 .submit-button {
   grid-column: 1/1;
   grid-row: 4/4;
   font-size: 1em;
-  letter-spacing: 0.1;
+  letter-spacing: 0.3px;
+  font-weight: 500;
   color: #fff;
   background-color: #174969;
   padding: 15px 25px;
@@ -38,15 +49,21 @@
   box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
 }
 
-.output-container {
+.output-grid-container {
   grid-column: 1/1;
   grid-row: 6/6;
+  width: 80vw;
+  height: auto;
+}
+
+.output-container {
   width: 80vw;
   height: 300px;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
   overflow: scroll;
+  font-family: monospace;
 }
 
 .output-interface {
@@ -55,4 +72,8 @@
 
 .output-variables {
   margin-left: 20px;
+}
+
+.bold {
+  font-weight: bold;
 }

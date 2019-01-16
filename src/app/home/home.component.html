@@ -1,23 +1,28 @@
 <div class="home-container">
   <!--<input (keyup)="onKey($event)">-->
+
   <mat-form-field class="text-area-container">
+    <span class="home-title">JSON Data</span>
     <textarea class="text-area" matInput (change)="onKey($event)"></textarea>
   </mat-form-field>
 
   <button class="submit-button" (click)="submit()">PROCESS</button>
 
   <!-- with pipe -->
-  <div class="output-container">
-    <div *ngIf="displayOutput && displayOutput.add">
-      <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
-        export interface {{ entry.key }} {{ '{' }}
-        <br />
-        <div class="output-variables" *ngFor="let item of entry.value | keys">
-          {{ item.key }} : {{ item.value | json }}
+  <div class="output-grid-container">
+    <span class="home-title">Interface</span>
+    <div class="output-container">
+      <div *ngIf="displayOutput && displayOutput.add">
+        <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
+          export interface <span class="bold">{{ entry.key }}</span> {{ '{' }}
           <br />
+          <div class="output-variables" *ngFor="let item of entry.value | keys">
+            <span class="bold">{{ item.key }}</span> : {{ item.value }}
+            <br />
+          </div>
+          <!--{{ entry.value | json }}-->
+          {{ '}' }}
         </div>
-        <!--{{ entry.value | json }}-->
-        {{ '}' }}
       </div>
     </div>
   </div>
