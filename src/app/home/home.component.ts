@@ -10,19 +10,24 @@ import { KeysPipe } from './keys.pipe';
 export class HomeComponent implements OnInit {
 
   displayOutput: any;
+  userInput: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onKey(input) {
+  submit() {
     try {
-      this.displayOutput = this.getInterface(jsonic(input.target.value));
+      this.displayOutput = this.getInterface(jsonic(this.userInput));
     }
     catch {
       console.log('error');
     }
+  }
+
+  onKey(input) {
+    this.userInput = input.target.value;
   }
 
   getInterface(res: any) {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material';
 
 import { KeysPipe } from './keys.pipe';
 
@@ -9,6 +10,7 @@ import { HomeComponent } from './home.component';
 @NgModule({
   imports: [
     CommonModule,
+    MatInputModule,
     HomeRoutingModule
   ],
   declarations: [

@@ -1,14 +1,25 @@
-<input (keyup)="onKey($event)">
+<div class="home-container">
+  <!--<input (keyup)="onKey($event)">-->
+  <mat-form-field class="text-area-container">
+    <textarea class="text-area" matInput (change)="onKey($event)"></textarea>
+  </mat-form-field>
 
-<!-- with pipe -->
-<div class="output-container">
-  <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
-    export interface {{ entry.key }}
-    <br />
-    <div *ngFor="let item of entry.value | keys">
-      {{ item.key }} : {{ item.value | json }}
-      <br />
+  <button class="submit-button" (click)="submit()">PROCESS</button>
+
+  <!-- with pipe -->
+  <div class="output-container">
+    <div *ngIf="displayOutput && displayOutput.add">
+      <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
+        export interface {{ entry.key }} {{ '{' }}
+        <br />
+        <div class="output-variables" *ngFor="let item of entry.value | keys">
+          {{ item.key }} : {{ item.value | json }}
+          <br />
+        </div>
+        <!--{{ entry.value | json }}-->
+        {{ '}' }}
+      </div>
     </div>
-    <!--{{ entry.value | json }}-->
   </div>
+
 </div>
