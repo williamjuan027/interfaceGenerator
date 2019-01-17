@@ -8,9 +8,36 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script>
+    // Store the URL the user was trying to access when receiving the 404.
+    sessionStorage.redirect = location.href;
+  </script>
+
+  <!-- Immediately redirect to the base URL so we can use the SPA routing. -->
+  <meta http-equiv="refresh" content="0;URL='/'"></meta>
+
 </head>
 
 <body>
+  <!-- Github Pages hack to allow SPA refresh without receiving 404. -->
+  <script>
+    (function() {
+      // Retrieve the URL the user was trying to access when receiving the 404.
+      var redirect = sessionStorage.redirect;
+      // Remove the URL from sessionStorage.
+      delete sessionStorage.redirect;
+      // Check if we actually need to redirect.
+      if (redirect && redirect != location.href) {
+        // We need to redirect to the URL the user was trying to access.
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <!-- /Github Pages hack. -->
+  <!-- IE required at least 512 bytes of data to show non-default 404. -->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
   <app-root></app-root>
 </body>
 
