@@ -20,9 +20,8 @@ export class HomeComponent implements OnInit {
   submit() {
     try {
       this.displayOutput = this.getInterface(jsonic(this.userInput));
-    }
-    catch {
-      console.log('error');
+    } catch (err) {
+      console.log('error: ' + err);
     }
   }
 
@@ -32,21 +31,20 @@ export class HomeComponent implements OnInit {
 
   getInterface(res: any) {
     let intfAdd: any = {};
-    let intf: any = {};
-    for (let key in res) {
+    const intf: any = {};
+    for (const key in res) {
       if (typeof(res[key]) === 'object') {
-        let newIntf = key.charAt(0).toUpperCase() + key.substr(1);
+        const newIntf = key.charAt(0).toUpperCase() + key.substr(1);
         let temp;
         if (Array.isArray(res[key])) {
           temp = this.getInterface(res[key][0]);
           intf[key] = newIntf + '[]';
-        }
-        else {
+        } else {
           temp = this.getInterface(res[key]);
           intf[key] = newIntf;
         }
-        let saveAdd: boolean = true;
-        for (let innerKey in intfAdd) {
+        let saveAdd = true;
+        for (const innerKey in intfAdd) {
           if (JSON.stringify(intfAdd[innerKey]) === JSON.stringify(temp.main)) {
              intf[key] = Array.isArray(res[key]) ? innerKey + '[]' : innerKey;
              saveAdd = false;
@@ -56,15 +54,14 @@ export class HomeComponent implements OnInit {
           intfAdd[newIntf] = temp.main;
         }
         intfAdd = Object.assign({}, intfAdd, temp.add);
-      }
-      else {
+      } else {
         intf[key] = typeof(res[key]);
       }
     }
-    let intfRet = {
+    const intfRet = {
       main: intf,
       add: intfAdd
-    }
+    };
     return intfRet;
   }
 
