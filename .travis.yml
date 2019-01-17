@@ -2,8 +2,7 @@ language: node_js
 node_js:
   - "9"
 dist: trusty
-sudo: false
-
+sudo: required
 branches:
   only:
   - master
@@ -12,12 +11,12 @@ cache:
   directories:
     - node_modules
 
-install:
-  - npm install -g yarn
+before_script:
+  - npm install -g @angular/cli
 
 script:
-  - yarn lint
-  - yarn build --base-href https://williamjuan027.github.io/interfaceGenerator/
+  - ng lint
+  - ng build --configuration=production --base-href https://williamjuan027.github.io/interfaceGenerator/
 deploy:
   provider: pages
   skip_cleanup: true
