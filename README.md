@@ -2,7 +2,7 @@
 
 ### What's this?
 A simple tool that converts JSON input to a Typescript interface, built with angular.
-The app is hosted on github pages and can be accessed [here](https://williamjuan027.github.io/interfaceGenerator/)
+The app is hosted on github pages and can be accessed [here](https://williamjuan027.github.io/interfaceGenerator/).
 
 ### Usage
 **Input**
