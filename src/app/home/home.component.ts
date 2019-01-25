@@ -47,15 +47,13 @@ export class HomeComponent implements OnInit {
           if (typeof(res[key][0]) !== 'object') {
             intf[key] = typeof(res[key][0]) + '[]';
             continue;
-          }
-          else {
+          } else {
             // if nested object, call this function recursively, until each
             // nested object is extracted
             temp = this.getInterface(res[key][0]);
             intf[key] = newIntf + '[]';
           }
-        }
-        else {
+        } else {
           temp = this.getInterface(res[key]);
           intf[key] = newIntf;
         }
@@ -70,8 +68,7 @@ export class HomeComponent implements OnInit {
           intfAdd[newIntf] = temp.main;
         }
         intfAdd = Object.assign({}, intfAdd, temp.add);
-      }
-      else {
+      } else {
         intf[key] = typeof(res[key]);
       }
     }
