@@ -32,13 +32,27 @@ export class HomeComponent implements OnInit {
   getInterface(res: any) {
     let intfAdd: any = {};
     const intf: any = {};
+
+    // loop through each key in object
     for (const key in res) {
+
+      // process nested object
       if (typeof(res[key]) === 'object') {
+
         const newIntf = key.charAt(0).toUpperCase() + key.substr(1);
         let temp;
+
+        // process arrays
         if (Array.isArray(res[key])) {
-          temp = this.getInterface(res[key][0]);
-          intf[key] = newIntf + '[]';
+          if (typeof(res[key][0]) !== 'object') {
+            intf[key] = typeof(res[key][0]) + '[]';
+            continue;
+          } else {
+            // if nested object, call this function recursively, until each
+            // nested object is extracted
+            temp = this.getInterface(res[key][0]);
+            intf[key] = newIntf + '[]';
+          }
         } else {
           temp = this.getInterface(res[key]);
           intf[key] = newIntf;
