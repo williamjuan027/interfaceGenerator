@@ -17,7 +17,7 @@ before_script:
 script:
   - ng lint
   - ng build --configuration=production --base-href /interfaceGenerator/
-  - if [ -f src/404.html ]; then mv src/404.html dist/404.html; else cp dist/index.html dist/404.html; fi 
+  - if [ -f src/404.html ]; then mv src/404.html dist/interfaceGenerator/404.html; else cp dist/interfaceGenerator/index.html dist/interfaceGenerator/404.html; fi 
   
 deploy:
   provider: pages
