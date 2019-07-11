@@ -33,12 +33,12 @@ The app is hosted on github pages and can be accessed [here](https://williamjuan
 **Output**
 ```ts
 export interface Maths { 
-  q1 : Q1 
+  q1 : Q1, 
   q2 : Q1 
 }
 export interface Q1 { 
-  question : string 
-  options : number[] 
+  question : string, 
+  options : number[], 
   answer : string 
 }
 ```
