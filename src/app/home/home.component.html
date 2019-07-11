@@ -16,8 +16,8 @@
         <div class="output-interface" *ngFor="let entry of displayOutput.add | keys">
           export interface <span class="bold">{{ entry.key }}</span> {{ '{' }}
           <br />
-          <div class="output-variables" *ngFor="let item of entry.value | keys">
-            <span class="bold">{{ item.key }}</span> : {{ item.value }}
+          <div class="output-variables" *ngFor="let item of entry.value | keys; let i = index">
+            <span class="bold">{{ item.key }}</span> : {{ item.value }}<span *ngIf="i < entry.value.length">,</span>
             <br />
           </div>
           <!--{{ entry.value | json }}-->
